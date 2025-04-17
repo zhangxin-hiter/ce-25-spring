@@ -4,6 +4,7 @@
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{tikz}
+\usetikzlibrary{calc}
 
 \usetikzlibrary{arrows.meta,positioning}
 
@@ -144,34 +145,30 @@
       \draw[->] (C)--(dots);
       \draw[->] (dots)--(D);
       \draw[->] (D.east)--node[above]{OUT}([xshift=1.5cm]D.east);
-    \end{tikzpicture}
-    等价于
-    \begin{tikzpicture}[auto,thick,node distance=2cm,>=stealth]
-      \tikzstyle{block}=[draw,rectangle,minimum height=1cm,minimum width=2cm]
-      \tikzstyle{circle}=[draw,circle,minimum size=1cm, align=center]
-
-      \node[circle](A){+};
-      \node[block,right=of A](B){S1};
-      \node[circle,right=of B](C){+};
-      \node[block,right=of C](D){S2};
-      \node[circle,right=of D](E){+};
-      \node[block,right=of E](F){S3};
-      \node[right=of F](dots){\large$\cdots$};
-      \node[circle,right=of dots](G){+};
-      \node[block,right=of G](H){Sn};
-
-      % Ensure no circular references or infinite loops in connections
-      \draw[->] (A) -- (B);
-      \draw[->] (B) -- (C);
-      \draw[->] (C) -- (D);
-      \draw[->] (D) -- (E);
-      \draw[->] (E) -- (F);
-      \draw[->] (F) -- (dots);
-      \draw[->] (dots) -- (G);
-      \draw[->] (G) -- (H);
-
-
-      
+    \end{tikzpicture}\\
+    等价于\\ \\
+    \begin{tikzpicture}[auto, thick, >=stealth, node distance=1cm]
+      \tikzstyle{block}=[draw, rectangle, minimum height=1cm, minimum width=1cm]
+      \tikzstyle{plus}=[draw, circle, minimum size=1cm, inner sep=0pt]
+    
+      \node[plus] (P1) {+};
+      \node[block, right=of P1] (S1) {S1};
+      \node[plus, right=of S1] (P2) {+};
+      \node[block, right=of P2] (S2) {S2};
+      \node[plus, right=of S2] (P3) {+};
+      \node[block, right=of P3] (S3) {S3};
+      \node[plus, right=of S3, xshift=0.5cm] (P4) {+};
+      \node[block, right=of P4] (Sn) {Sn};
+    
+      \node at ($(S3)!0.5!(P4)$) {\Large$\cdots$};
+    
+      \draw[->] (P1) -- (S1);
+      \draw[->] (S1) -- (P2);
+      \draw[->] (P2) -- (S2);
+      \draw[->] (S2) -- (P3);
+      \draw[->] (P3) -- (S3);
+      \draw[->] (S3) -- (P4);
+      \draw[->] (P4) -- (Sn);
     \end{tikzpicture}
 \end{enumerate}
 \end{document}
