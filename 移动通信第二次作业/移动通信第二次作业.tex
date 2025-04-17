@@ -1,0 +1,219 @@
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage[a4paper,right=2cm,left=2cm,top=1.5cm,bottom=1.5cm]{geometry}
+
+\title{\zihao{1} 移动通信第二次作业}
+\author{通信四班 220210404 张昕}
+\date{\today}
+
+\begin{document}
+\maketitle
+\zihao{4}
+\begin{enumerate}
+    \item 同频复用比例
+          \begin{equation}
+          Q=\frac{D}{R}
+          \end{equation}
+          由余弦定理
+          \begin{equation}
+            a^2+b^2-2\cos(C)ab=c^2
+          \end{equation}可知
+          \begin{equation}
+            D=(\frac{\sqrt{3}}{2}Rj)^2+(\frac{\sqrt{3}}{2}Ri)^2+\frac{3}{4}R^2ij
+          \end{equation}
+          代入(1)得
+          \begin{align}
+            Q &=\frac{\sqrt{\frac{3}{4}R^{2}j^{2}+\frac{3}{4}R^{2}i^{2}+\frac{3}{4}R^{2}ij}}{0.5R}\\
+              &=\sqrt{3i^2+3ij+3j^2}
+          \end{align}
+          又因为
+          \begin{equation}
+            N=i^2+ij+j^2
+          \end{equation}
+          得
+          \begin{equation}
+            Q=\sqrt{3N}
+          \end{equation}
+    \item \begin{enumerate}
+        \item 总带宽为24MHz，两个30MHz信道提供双向信道，所以
+              \begin{equation}
+                S=\frac{24M}{2*30K}=400\text{个}
+              \end{equation}
+              所以
+              \begin{equation}
+                k=\frac{400}{4}=100\text{个}
+              \end{equation}
+        \item 信道利用率为90\%,所以总话务量
+              \begin{equation}
+                A=S*90\%
+              \end{equation}
+              又因为用户话务量
+              \begin{equation}
+                A_U=0.1Erlang
+              \end{equation} 
+              所以最大用户数目为
+              \begin{equation}
+                U=\frac{A}{A_u}=900
+              \end{equation}
+        \item 信道数目100，$A=90Erlang$,所以
+              \begin{equation}
+                G=0.03
+              \end{equation}
+        \item 每个扇区信道数目为33，呼阻率
+              \begin{equation}
+                G=0.03
+              \end{equation}
+              每个扇区话务量强度
+              \begin{equation}
+                A=25Erlang
+              \end{equation}
+              所以查表得每个扇区最大支持用户为250人，所以每小区支持用户数
+              \begin{equation}
+                N=750\text{人}
+              \end{equation}
+        \item 小区数
+              \begin{equation}
+                N_{cell}=\frac{50km*50KM}{5KM^2}=500
+              \end{equation}
+              所以用户量
+              \begin{equation}
+                U=N_{cell}*900=450000
+              \end{equation}
+        \item 用户量
+              \begin{equation}
+                U=N_{cell}*750=375000
+              \end{equation}
+            \end{enumerate}
+    \item \begin{enumerate}
+        \item 当$N=4$时，每个小区可用信道数为
+              \begin{equation}
+                C=\frac{300}{4}=75
+              \end{equation}
+              又因为
+              \begin{equation}
+                G=1\%
+              \end{equation}
+              查表得
+              \begin{equation}
+                A=60Erlang
+              \end{equation}
+              当$N=7$时，每个小区可用信道数为
+              \begin{equation}
+                C=\frac{300}{7}=43
+              \end{equation}
+              又因为
+              \begin{equation}
+                G=1\%
+              \end{equation}
+              查表得
+              \begin{equation}
+                A=31Erlang
+              \end{equation}
+              当$N=12$时，每个小区可用信道数为
+              \begin{equation}
+                C=\frac{300}{12}=25
+              \end{equation}
+              又因为
+              \begin{equation}
+                G=1\%
+              \end{equation}
+              查表得
+              \begin{equation}
+                A=16Erlang
+              \end{equation}
+        \item 当$N=4$时，
+          \begin{equation}
+            U=\frac{A}{A_u}*84=126000\text{个}
+          \end{equation}    
+          当$N=7$时，
+          \begin{equation}
+            U=\frac{A}{A_u}*84=65100\text{个}
+          \end{equation}
+          当$N=12$时，
+          \begin{equation}
+            U=\frac{A}{A_u}*84=33600\text{个}
+          \end{equation}      
+    \end{enumerate}
+    \item 已知
+          \begin{equation}
+            P_r(dbm)=P_o(dbm)-10n\log(\frac{d}{d_o})
+          \end{equation}
+          设小区半径为R，且
+          \begin{equation}
+            Q=\frac{D}{R}=\sqrt{3N}
+          \end{equation}
+          所以
+          \begin{equation}
+            D=\sqrt{3N}R
+          \end{equation}
+          当$N=7$时
+          \begin{equation}
+            P_o(dbm)-10n\log(\frac{d}{d_o})<-100dbm
+          \end{equation}
+          解得
+          \begin{equation}
+            R>470m
+          \end{equation}
+          当$N=4$时
+          \begin{equation}
+            P_o(dbm)-10n\log(\frac{d}{d_o})<-100dbm
+          \end{equation}
+          解得
+          \begin{equation}
+            R>621m
+          \end{equation}
+    \item \begin{enumerate}
+        \item 全双工\\
+              每个信道带宽
+              \begin{equation}
+                \Delta=\frac{50M}{832}=60KHz
+              \end{equation}
+              60KHz的全双工信道分为前向（基站到用户）和反向（用户到基站）个30KHz，前者比后者高45MHz
+        \item 发射频率
+              \begin{equation}
+                f=880.560M-45M=835.56MHz
+              \end{equation}      
+        \item A区，21个控制信道，395个话音信道\\
+              B区，21个控制信道，395个话音信道
+        \item N=18
+        \item $Q=\dfrac{D}{R}=\sqrt{3N}$\\
+              所以
+              \begin{equation}
+                D=\sqrt{3N}R
+              \end{equation}
+              当$N=4$时
+              \begin{equation}
+                D=4.58R
+              \end{equation}
+              当$N=7$时
+              \begin{equation}
+                D=3.46R
+              \end{equation}
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 基站费用为50万，MTSO费用150万，广告费用50万美元所以基站数量为
+              \begin{equation}
+                N=\frac{600-150-50}{50}=8\text{个}
+              \end{equation} 
+        \item 许可证覆盖面积140平方公里，每个小区面积
+              \begin{equation}
+                S=\frac{140km^2}{8}=17.5km^2
+              \end{equation}      
+              由六边形面积公式
+              \begin{equation}
+                S1=\frac{3\sqrt{3}R^2}{2}
+              \end{equation}
+              解得
+              \begin{equation}
+                R=2.6km
+              \end{equation}
+        \item $w=n*50*12+2n*50*12+4n*50*12+8n*50*12$
+              \begin{equation}
+                n=1112\text{名}
+              \end{equation}
+        \item $N=\dfrac{1112}{140km^2}=7.9\text{人}/km^2$
+    \end{enumerate}
+\end{enumerate}
+\end{document}

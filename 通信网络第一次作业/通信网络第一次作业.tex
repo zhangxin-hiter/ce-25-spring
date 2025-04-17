@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage[a4paper,left=2cm,right=2cm,bottom=3cm,top=3cm]{geometry}
+
+\title{\zihao{2}通信网络第一次作业}
+\author{通信四班 220210404 张昕}
+\date{\today}
+\begin{document}
+\maketitle
+\zihao{3}
+\begin{enumerate}
+    \item \begin{description}
+        \item[电路交换:]~ \begin{description}
+            \item[优点] ~\begin{enumerate}
+                \item 只要能够建立连接，那么双方通信所需的传输带宽就不会改变 
+            \end{enumerate}
+            \item[缺点]~ \begin{enumerate}
+                \item 通信线路的利用率较低
+                \item 通信网的业务量较大是，电路交换无法保证每一个呼叫接通
+            \end{enumerate}
+        \end{description}
+        \item[分组交换] ~\begin{description}
+            \item[优点] ~\begin{enumerate}
+                \item 能够合理利用各链路的传输带宽
+                \item 具有良好的生存性
+            \end{enumerate}
+            \item[缺点]~ \begin{enumerate}
+                \item 具有时延
+            \end{enumerate}
+        \end{description}
+        \item[报文交换] ~\begin{description}
+            \item[优点] ~\begin{enumerate}
+                \item 省去了划分小的分组步骤，也省去了终点把分组重装成报文的过程
+            \end{enumerate}
+            \item[缺点]~ \begin{enumerate}
+                \item 时延较大
+            \end{enumerate}
+        \end{description}
+    \end{description}
+    \item \begin{enumerate}[label=(\arabic*)]
+        \item 时延：数据从网络一端传送到另一端的时间
+        \item 速率：主机在数字信道上传送数据的速率
+        \item 带宽：在单位时间内从网络的某一点到另一点的最高数据率
+        \item 吞吐量：单位时间内通过某个网络的数据量
+        \item 时延带宽积：传播时延和带宽的乘积
+        \item 往返时间：从发送数据开始，到发送方收到接收方确认的时间
+        \item 利用率：分为信道利用率和网络利用率。信道利用率：某信道有百分之几的时间是利用过的。网络利用率：全网络信道利用率的平均值
+    \end{enumerate}
+    \item 网络体系结构采用分层次是因为分层可以把庞大的问题转化为局部的较小问题\newline
+          \text{体系结构分为：}
+          \begin{enumerate}
+            \item 应用层
+            \item 运输层
+            \item 数据链路层
+            \item 网络层
+            \item 物理层
+          \end{enumerate}
+          \begin{description}
+            \item[物理层] 在物理层上所传数据的单位是比特。透明传送比特流，确定连接电缆的插头应当有多少根引脚以及如何连接
+            \item[数据链路层] 将网络层交下来的ip数据报组装成帧，在两个相邻节点间的链路上透明的传送帧中的数据
+            \item[网络层] 负责为分组交换网上的不同主机提供通信服务
+            \item[运输层] 向两个主机中的进程之间的通信提供服务
+            \item[应用层] 应用层是体系结构中的最高层，直接为用户的应用进程提供服务  
+          \end{description}
+          快递运输
+    \item \begin{enumerate}[label=(\arabic*)]
+        \item 报文交换：一个报文延迟为
+              \begin{equation}
+                9Mb/10Mbps=900ms
+              \end{equation}
+              报文到达路由器转发也需时延
+              \begin{equation}
+                900ms*2=1800ms
+              \end{equation}
+              分组交换：一个报文分组时延为
+              \begin{equation}
+                10kb/10Mbps=1ms
+              \end{equation}
+              一共有
+              \begin{equation}
+                9Mb/10kb=900\text{个分组}
+              \end{equation}
+              又因为路由器接收一个分组后直接转发
+              \begin{equation}
+                900ms+1ms=901ms
+              \end{equation}
+        \item 建立TCP连接需要2RTT，每个分组需要1个RTT
+              \begin{equation}
+                2RTT+899.5RTT+901ms=73021ms
+              \end{equation}
+        \item 因为存在900个分组且每个RTT只能发送20个分组
+              \begin{equation}
+                2RTT+44RTT+0.5RTT=3720ms
+              \end{equation}
+    \end{enumerate}      
+\end{enumerate}
+
+\end{document}
